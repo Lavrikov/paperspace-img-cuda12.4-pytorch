@@ -1,5 +1,5 @@
 # Используем образ на основе Ubuntu с поддержкой CUDA
-FROM nvidia/cuda:12.4.1-cudnn8-devel-ubuntu22.04
+FROM nvcr.io/nvidia/cuda:12.2.0-runtime-ubuntu22.04
 
 # Установить зависимости для сборки Python
 RUN apt-get update && apt-get install -y \
