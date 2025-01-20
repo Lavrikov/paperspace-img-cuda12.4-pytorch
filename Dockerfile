@@ -31,3 +31,9 @@ RUN python3.11 -m ensurepip --upgrade \
 
 # Expose порт 8888 для доступа к Jupyter Lab
 EXPOSE 8888
+
+# дополнительные библиотеки
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+
+# Команда для запуска контейнера
+CMD ["/bin/bash"]
