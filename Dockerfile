@@ -35,5 +35,19 @@ EXPOSE 8888
 # дополнительные библиотеки
 RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 
+# Установка Miniconda
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh \
+    && bash /tmp/miniconda.sh -b -p /opt/miniconda \
+    && rm /tmp/miniconda.sh \
+    && /opt/miniconda/bin/conda update -n base -c defaults conda -y
+
+# Настройка окружения
+ENV PATH="/opt/miniconda/bin:$PATH"
+RUN conda create -n py311 python=3.11 -y \
+    && echo "source activate py311" > ~/.bashrc
+
+# Установка NVCC через Conda
+RUN conda install -n py311 cudatoolkit -c nvidia -y
+
 # Команда для запуска контейнера
 CMD ["/bin/bash"]
