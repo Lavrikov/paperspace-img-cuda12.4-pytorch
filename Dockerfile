@@ -33,7 +33,7 @@ RUN python3.11 -m ensurepip --upgrade \
 EXPOSE 8888
 
 # дополнительные библиотеки
-RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+RUN apt-get update && apt-get install git ffmpeg libsm6 libxext6  -y
 
 # Установка Miniconda
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh \
